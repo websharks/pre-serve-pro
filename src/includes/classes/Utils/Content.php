@@ -34,7 +34,7 @@ class Content extends SCoreClasses\SCore\Base\Core
      *
      * @since 16xxxx Content utils.
      *
-     * @type CoreClasses\Core\Tokenizer[]|null
+     * @type array|null
      */
     protected $Tokenizers;
 
@@ -52,15 +52,15 @@ class Content extends SCoreClasses\SCore\Base\Core
         $content = (string) $content;
 
         if (mb_strpos($content, '[') === false) {
+            $this->Tokenizers[] = null;
             return $content; // Nothing to do.
         } elseif (!preg_match('/\<(?:pre|code|samp)/ui', $content)) {
+            $this->Tokenizers[] = null;
             return $content; // Nothing to do.
         }
         $Tokenizer          = c::tokenize($content, ['pre', 'code', 'samp']);
-        $this->Tokenizers[] = $Tokenizer;
-        $content            = $Tokenizer->getString();
-
-        return $content;
+        $this->Tokenizers[] = $Tokenizer; // End of stack.
+        return $content     = $Tokenizer->getString();
     }
 
     /**
@@ -76,13 +76,14 @@ class Content extends SCoreClasses\SCore\Base\Core
     {
         $content = (string) $content;
 
-        if (!$this->Tokenizers || !($Tokenizer = array_pop($this->Tokenizers))) {
+        if (!$this->Tokenizers) {
+            debug(0, c::issue(vars(), 'Missing tokenizers.'));
+            return $content; // Nothing to do.
+        } elseif (!($Tokenizer = array_pop($this->Tokenizers))) {
             return $content; // Nothing to do.
         } // Pops last tokenizer off the stack ↑ also.
 
         $Tokenizer->setString($content);
-        $content = $Tokenizer->restoreGetString();
-
-        return $content;
+        return $content = $Tokenizer->restoreGetString();
     }
 }

@@ -91,31 +91,30 @@ class App extends SCoreClasses\App
 
         add_action('init', function () {
 
-            # Filters against `the_content`. Covers most WP themes/plugins.
+            # Filters `the_content`. Covers most WP themes/plugins.
 
-            add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -100);
-            add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 100);
+            add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+            add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
-            # Filters against `if_shortcode_content` for compatibility w/ the `[if]` shortcode.
+            # Filters `if_shortcode_content` for compatibility w/ the `[if]` shortcode.
 
-            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentPreserve'], -100);
-            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentRestore'], 100);
+            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
-            # Filters against `woocommerce_short_description` for compatibility w/ WooCommerce.
-
-            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentPreserve'], -100);
-            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentRestore'], 100);
+            # Filters `woocommerce_short_description` for compatibility w/ WooCommerce.
 
             if (has_filter('woocommerce_short_description', 'wc_format_product_short_description') && s::jetpackCanMarkdown()) {
                 // Fixing a WooCommerce bug by Moving Jetpack markdown to a more logical/compatible priority.
-                // NOTE: I consider this a bug because WC applies markdown 'after' other filters, which leads to corruption.
-                // They also apply `wpautop()` twice. Once via standard filters, then again in `wc_format_product_short_description()`.
+                // I consider this a bug because WooCommerce applies markdown 'after' other filters, which can cause corruption.
+                // WooCommerce also applies `wpautop()` twice. Once via filter, then again after a late/buggy markdown.
                 if (remove_filter('woocommerce_short_description', 'wc_format_product_short_description', 9999999)) {
-                    add_filter('woocommerce_short_description', s::class.'::jetpackMarkdown', -1000);
+                    add_filter('woocommerce_short_description', s::class.'::jetpackMarkdown', -10000);
                 } else { // Flag this as a potential problem whenver debugging is enabled by a developer.
-                    debug(0, c::issue([], 'Failed to remove `wc_format_product_short_description()` hook.'));
+                    debug(0, c::issue([], 'Failed to remove `wc_format_product_short_description()` filter.'));
                 }
-            }
+            } // Preservation comes after Jetpack markdown. Markdown should almost always occur first!
+            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentRestore'], 1000);
         }, 100);
     }
 }
