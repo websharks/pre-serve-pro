@@ -1,0 +1,54 @@
+{
+  "name": "websharks/pre-serve-pro",
+  "homepage": "https://github.com/websharks/pre-serve-pro",
+  "description": "<Pre>serve content in WordPress that's inside <pre>, <code>, or <samp> tags.",
+  "keywords": ["websharks", "wpsharks", "shortcode", "samples"],
+
+  "type": "project",
+  "license": "GPL-3.0+",
+
+  "authors": [{
+    "name": "wpsharks",
+    "homepage": "https://wpsharks.com",
+    "role": "company"
+  }, {
+    "name": "jaswsinc",
+    "homepage": "https://jaswsinc.com",
+    "role": "developer"
+  }, {
+    "name": "raamdev",
+    "homepage": "http://raam.org",
+    "role": "developer"
+  }],
+
+  "support": {
+    "source": "https://github.com/websharks/pre-serve-pro",
+    "issues": "https://github.com/websharks/pre-serve-pro/issues"
+  },
+
+  "require": {
+    "php-64bit": ">=7.0.4",
+    "websharks/wp-php-rv": "dev-master",
+    "websharks/wp-sharks-core-rv": "dev-master"
+  },
+  "require-dev": {},
+
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+
+  "autoload": {
+    "psr-4": {
+      "WebSharks\\WpSharks\\Preserve\\Pro\\Classes\\": "src/includes/classes",
+      "WebSharks\\WpSharks\\Preserve\\Pro\\Functions\\": "src/includes/functions",
+      "WebSharks\\WpSharks\\Preserve\\Pro\\Interfaces\\": "src/includes/interfaces",
+      "WebSharks\\WpSharks\\Preserve\\Pro\\Traits\\": "src/includes/traits"
+    }
+  },
+
+  "config": {
+    "vendor-dir": "src/vendor",
+    "preferred-install": "dist"
+  },
+
+  "repositories": []
+}

@@ -1,0 +1,28 @@
+project_title                               = <Pre>serve Pro
+
+project_owner                               = websharks
+project_slug                                = pre-serve-pro
+project_text_domain                         = pre-serve
+
+project_namespace                           = WebSharks\\WpSharks\\Preserve\\Pro
+project_sub_namespace                       = WpSharksPreservePro
+
+project_lite_title                          = <Pre>serve
+project_lite_slug                           = pre-serve
+project_lite_text_domain                    = pre-serve
+
+project_lite_namespace                      = WebSharks\\WpSharks\\Preserve
+project_lite_sub_namespace                  = WpSharksPreserve
+
+project_version                             = %y%m%d.%now
+
+project_php_required_version                = 7.0.4
+project_php_tested_up_to_version            = ${php.version}
+project_php_required_bits                   = 64
+project_php_required_extensions             =
+
+project_wp_required_version                 = 4.5.3
+project_wp_tested_up_to_version             = 4.5.3
+
+project_wp_sharks_core_required_version     = 160721.58752
+project_wp_sharks_core_tested_up_to_version = 160721.58752
