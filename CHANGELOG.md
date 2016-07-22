@@ -1,3 +1,3 @@
-## v160722.57589
+## $v
 
 - Initial release.
