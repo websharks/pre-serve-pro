@@ -1,6 +1,6 @@
 === `<Pre>`serve Pro ===
 
-Stable tag: 160722.57589
+Stable tag: 160722.57918
 
 Tested up to: 4.5.3
 Requires at least: 4.5.3
