@@ -1,7 +1,7 @@
 {
   "name": "websharks/pre-serve-pro",
   "homepage": "https://github.com/websharks/pre-serve-pro",
-  "description": "<Pre>serve content in WordPress that's inside <pre>, <code>, or <samp> tags.",
+  "description": "Preserves content inside <pre>, <code>, <samp> tags.",
   "keywords": ["websharks", "wpsharks", "shortcode", "samples"],
 
   "type": "project",

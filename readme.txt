@@ -1,6 +1,6 @@
 === `<Pre>`serve Pro ===
 
-Stable tag: 160721.76951
+Stable tag: 160722.45627
 
 Tested up to: 4.5.3
 Requires at least: 4.5.3
@@ -12,9 +12,9 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Donate: https://wpsharks.com/donate
 Contributors: wpsharks, JasWSInc, raamdev, KristineDS, reedyseth, sitegeek
-Tags: wpsharks, shortcodes, samples, pre, code, pre-serve, preserve
+Tags: wpsharks, shortcodes, samples, pre, code, pre-serve, preserve, samp
 
-`<Pre>`serve content in WordPress that's inside `<pre>`, `<code>`, or `<samp>` tags.
+Preserves content inside `<pre>`, `<code>`, `<samp>` tags.
 
 == Description ==
 

@@ -1,6 +1,6 @@
 ## `<Pre>`serve Pro
 
-Preserve content in WordPress that's inside `<pre>`, `<code>`, or `<samp>` tags.
+Preserves content inside `<pre>`, `<code>`, `<samp>` tags.
 
 - Also compatible with Jetpack Markdown; i.e., fenced code blocks and inline `code`.
 

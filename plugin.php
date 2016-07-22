@@ -4,9 +4,9 @@
  *
  * @wp-plugin
  *
- * Version: 160721.76951
+ * Version: 160722.45627
  * Text Domain: pre-serve
- * Plugin Name: <Pre>serve Pro
+ * Plugin Name: &lt;Pre&gt;serve Pro
  *
  * Author: WP Sharks™
  * Author URI: https://wpsharks.com
@@ -15,7 +15,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
  * Plugin URI: https://wpsharks.com/product/pre-serve-pro
- * Description: <Pre>serve content in WordPress that's inside <pre>, <code>, or <samp> tags.
+ * Description: Preserves content inside &lt;pre&gt;, &lt;code&gt;, or &lt;samp&gt; tags.
  */
 // PHP v5.2 compatible.
 
