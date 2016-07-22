@@ -25,14 +25,14 @@ use function get_defined_vars as vars;
 /**
  * Content utils.
  *
- * @since 16xxxx Content utils.
+ * @since 160722.57589 Content utils.
  */
 class Content extends SCoreClasses\SCore\Base\Core
 {
     /**
      * Tokenizers.
      *
-     * @since 16xxxx Content utils.
+     * @since 160722.57589 Content utils.
      *
      * @type array|null
      */
@@ -41,7 +41,7 @@ class Content extends SCoreClasses\SCore\Base\Core
     /**
      * Preserve pre/code/samp.
      *
-     * @since 16xxxx Content utils.
+     * @since 160722.57589 Content utils.
      *
      * @param string|scalar $content Content.
      *
@@ -66,7 +66,7 @@ class Content extends SCoreClasses\SCore\Base\Core
     /**
      * Restore pre/code/samp.
      *
-     * @since 16xxxx Content utils.
+     * @since 160722.57589 Content utils.
      *
      * @param string|scalar $content Content.
      *
