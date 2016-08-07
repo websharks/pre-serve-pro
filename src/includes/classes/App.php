@@ -97,10 +97,12 @@ class App extends SCoreClasses\App
 
         add_action('init', function () {
 
-            # Filters `the_content` and `get_the_excerpt`. Covers most WP themes/plugins.
+            # Filters `the_content`. Covers most WP themes/plugins.
 
             add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
             add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
+
+            # Filters `get_the_excerpt`. For WP themes/plugins that use a true excerpt.
 
             add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
             add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentRestore'], 1000);
