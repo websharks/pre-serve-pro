@@ -42,7 +42,7 @@ class App extends SCoreClasses\App
      *
      * @var string Version.
      */
-    const VERSION = '160731.37913'; //v//
+    const VERSION = '160807.32004'; //v//
 
     /**
      * Constructor.
@@ -97,10 +97,13 @@ class App extends SCoreClasses\App
 
         add_action('init', function () {
 
-            # Filters `the_content`. Covers most WP themes/plugins.
+            # Filters `the_content` and `get_the_excerpt`. Covers most WP themes/plugins.
 
             add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
             add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
+
+            add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+            add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
             # Filters `if_shortcode_content` for compatibility w/ the `[if]` shortcode.
 

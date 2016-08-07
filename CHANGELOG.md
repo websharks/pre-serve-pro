@@ -1,3 +1,7 @@
+## [coming soon]
+
+- Preserving `get_the_excerpt()` also.
+
 ## v160731.37913
 
 - Updating to the latest WP Sharks core.
