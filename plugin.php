@@ -4,7 +4,7 @@
  *
  * @wp-plugin
  *
- * Version: 160807.32004
+ * Version: 160919.19112
  * Text Domain: pre-serve
  * Plugin Name: &lt;Pre&gt;serve Pro
  *
