@@ -1,4 +1,4 @@
-## [coming soon]
+## $v
 
 - Preserving `get_the_excerpt()` also.
 
