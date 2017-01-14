@@ -1,3 +1,7 @@
+## $v
+
+- Enhancing security by removing `basename(__FILE__)` from direct access notices.
+
 ## v160919.19112
 
 - Preserving `get_the_excerpt()` also.
