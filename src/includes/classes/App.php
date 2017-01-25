@@ -5,7 +5,7 @@
  * @author @jaswsinc
  * @copyright WP Sharks™
  */
-declare (strict_types = 1);
+declare(strict_types=1);
 namespace WebSharks\WpSharks\Preserve\Pro\Classes;
 
 use WebSharks\WpSharks\Preserve\Pro\Classes;
@@ -40,7 +40,7 @@ class App extends SCoreClasses\App
      *
      * @since 160722.57589 Initial release.
      *
-     * @var string Version.
+     * @type string Version.
      */
     const VERSION = '160919.19112'; //v//
 
@@ -96,7 +96,6 @@ class App extends SCoreClasses\App
         # On `init` w/ a late priority.
 
         add_action('init', function () {
-
             # Filters `the_content`. Covers most WP themes/plugins.
 
             add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);

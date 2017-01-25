@@ -5,7 +5,7 @@
  * @author @jaswsinc
  * @copyright WP Sharks™
  */
-declare (strict_types = 1);
+declare(strict_types=1);
 namespace WebSharks\WpSharks\Preserve\Pro\Classes\Utils;
 
 use WebSharks\WpSharks\Preserve\Pro\Classes;
@@ -40,7 +40,7 @@ class Content extends SCoreClasses\SCore\Base\Core
      *
      * @since 160722.57589 Content utils.
      *
-     * @var array|null
+     * @type array|null
      */
     protected $Tokenizers;
 
@@ -60,13 +60,17 @@ class Content extends SCoreClasses\SCore\Base\Core
         if (!$content) {
             $this->Tokenizers[] = null;
             return $content; // Nothing to do.
-        } elseif (mb_strpos($content, '[') === false) {
-            $this->Tokenizers[] = null;
-            return $content; // Nothing to do.
         } elseif (!preg_match('/\<(?:pre|code|samp)/ui', $content)) {
             $this->Tokenizers[] = null;
             return $content; // Nothing to do.
         }
+        // Note: The documentation for this plugin states that it also preserves
+        // content in backticks. That's not exactly true, but it is Markdown compatible.
+
+        // Assuming that Jetpack (or similar) is being used for Markdown parsing.
+        // So backticks will have already been transformed into `<pre>` or `<code>` tags.
+        // All we are concerned with in the content filtering phase is pure HTML markup.
+
         $Tokenizer          = c::tokenize($content, ['pre', 'code', 'samp']);
         $this->Tokenizers[] = $Tokenizer; // End of stack.
         return $content     = $Tokenizer->getString();
