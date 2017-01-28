@@ -1,8 +1,8 @@
 === `<Pre>`serve Pro ===
 
-Stable tag: 160919.19112
+Stable tag: 170128.2313
 
-Tested up to: 4.6
+Tested up to: 4.8-alpha
 Requires at least: 4.5.3
 
 Text Domain: pre-serve

@@ -42,7 +42,7 @@ class App extends SCoreClasses\App
      *
      * @type string Version.
      */
-    const VERSION = '160919.19112'; //v//
+    const VERSION = '170128.2313'; //v//
 
     /**
      * Constructor.
@@ -66,7 +66,7 @@ class App extends SCoreClasses\App
                 '§file' => dirname(__FILE__, 4).'/plugin.php',
             ],
             '©brand' => [
-                '©acronym' => 'PREServe',
+                '©acronym' => '<Pre>serve',
                 '©name'    => '<Pre>serve',
 
                 '©slug' => 'pre-serve',
@@ -93,38 +93,20 @@ class App extends SCoreClasses\App
     {
         parent::onSetupOtherHooks();
 
-        # On `init` w/ a late priority.
+        add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+        add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
-        add_action('init', function () {
-            # Filters `the_content`. Covers most WP themes/plugins.
+        add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+        add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
-            add_filter('the_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
-            add_filter('the_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
+        add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+        add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
 
-            # Filters `get_the_excerpt`. For WP themes/plugins that use a true excerpt.
-
-            add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
-            add_filter('get_the_excerpt', [$this->Utils->Content, 'onTheContentRestore'], 1000);
-
-            # Filters `if_shortcode_content` for compatibility w/ the `[if]` shortcode.
-
-            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
-            add_filter('if_shortcode_content', [$this->Utils->Content, 'onTheContentRestore'], 1000);
-
-            # Filters `woocommerce_short_description` for compatibility w/ WooCommerce.
-
-            if (has_filter('woocommerce_short_description', 'wc_format_product_short_description') && s::jetpackCanMarkdown()) {
-                // Fixing a WooCommerce bug by Moving Jetpack markdown to a more logical/compatible priority.
-                // I consider this a bug because WooCommerce applies markdown 'after' other filters, which can cause corruption.
-                // WooCommerce also applies `wpautop()` twice. Once via filter, then again after a late/buggy markdown.
-                if (remove_filter('woocommerce_short_description', 'wc_format_product_short_description', 9999999)) {
-                    add_filter('woocommerce_short_description', s::class.'::jetpackMarkdown', -10000);
-                } else { // Flag this as a potential problem whenver debugging is enabled by a developer.
-                    debug(0, c::issue([], 'Failed to remove `wc_format_product_short_description()` filter.'));
-                }
-            } // Preservation comes after Jetpack markdown. Markdown should almost always occur first!
-            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
-            add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentRestore'], 1000);
-        }, 100);
+        if (remove_filter('woocommerce_short_description', 'wc_format_product_short_description', 9999999)) {
+            // Fix bug: WooCommerce applies markdown after other filters, which can cause corruption.
+            add_filter('woocommerce_short_description', 'wc_format_product_short_description', -10000);
+        }
+        add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentPreserve'], -1000);
+        add_filter('woocommerce_short_description', [$this->Utils->Content, 'onTheContentRestore'], 1000);
     }
 }

@@ -1,14 +1,14 @@
-# Copyright (C) 2016 &lt;Pre&gt;serve Pro
+# Copyright (C) 2017 &lt;Pre&gt;serve Pro
 # This file is distributed under the same license as the &lt;Pre&gt;serve Pro package.
 msgid ""
 msgstr ""
-"Project-Id-Version: &lt;Pre&gt;serve Pro 160919.19112\n"
+"Project-Id-Version: &lt;Pre&gt;serve Pro 170128.2313\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/pre-serve-pro\n"
-"POT-Creation-Date: 2016-09-19 05:19:16+00:00\n"
+"POT-Creation-Date: 2017-01-28 00:38:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 

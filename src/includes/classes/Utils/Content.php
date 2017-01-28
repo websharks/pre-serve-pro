@@ -38,7 +38,7 @@ class Content extends SCoreClasses\SCore\Base\Core
     /**
      * Tokenizers.
      *
-     * @since 160722.57589 Content utils.
+     * @since 160722.57589
      *
      * @type array|null
      */
@@ -67,10 +67,9 @@ class Content extends SCoreClasses\SCore\Base\Core
         // Note: The documentation for this plugin states that it also preserves
         // content in backticks. That's not exactly true, but it is Markdown compatible.
 
-        // Assuming that Jetpack (or similar) is being used for Markdown parsing.
-        // So backticks will have already been transformed into `<pre>` or `<code>` tags.
-        // All we are concerned with in the content filtering phase is pure HTML markup.
-
+        // Assuming that Jetpack (or similar) is being used for Markdown parsing,
+        // backticks will have already been transformed into `<pre>` or `<code>` tags.
+        // So all we are concerned with in the content filtering phase is pure HTML markup.
         $Tokenizer          = c::tokenize($content, ['pre', 'code', 'samp']);
         $this->Tokenizers[] = $Tokenizer; // End of stack.
         return $content     = $Tokenizer->getString();

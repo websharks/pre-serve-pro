@@ -1,5 +1,7 @@
 ## $v
 
+- Updating minimum required version of the WP Sharks Core.
+- Enhancing compatibility with WooCommerce short product descriptions.
 - Enhancing security by removing `basename(__FILE__)` from direct access notices.
 - Removing the condition that requires a `[` bracket to exist for preservation to occur.
 
